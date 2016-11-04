@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+Extension.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -18,7 +19,8 @@ int main(int argc, const char * argv[]) {
         NSArray * setOfWords = [input componentsSeparatedByString:@" "];
         
         for (NSString * word in setOfWords){
-            NSLog(@"%@", word);
+            NSString * pigWord = [word stringByPigLatinization];
+            NSLog(@"%@", pigWord);
         }
     }
     return 0;

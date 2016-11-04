@@ -11,9 +11,20 @@
 @implementation NSString (Extension)
 
 -(NSString *)stringByPigLatinization {
-    NSString * s = @"Hi";
-    return s;
-}
-
-
+    
+    NSCharacterSet * vowels = [NSCharacterSet characterSetWithCharactersInString:@"aeiuo"];
+    NSScanner * pigScanner = [NSScanner scannerWithString:self];
+    NSString *theText;
+    [pigScanner scanUpToCharactersFromSet:vowels intoString:&theText];
+    
+    NSString *newStr = [self substringWithRange:NSMakeRange([theText length], [self length]-[theText length])];
+    
+    if (self != theText) {}
+    else{newStr = [newStr stringByAppendingString:theText];}
+    
+    if ([self hasPrefix: @"a"]||[self hasPrefix: @"e"]||[self hasPrefix: @"i"]||[self hasPrefix: @"o"]||[self hasPrefix: @"u"]) {
+            newStr = [newStr stringByAppendingString:@"way"];
+    }else{newStr = [newStr stringByAppendingString:@"ay"];}
+    return newStr;
+    }
 @end
